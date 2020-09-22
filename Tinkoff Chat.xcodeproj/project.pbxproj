@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C5532842517F65E006CFD78 /* UIElementSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5532832517F65E006CFD78 /* UIElementSetting.swift */; };
 		5CDBE53D250FFFF300174F83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBE53C250FFFF300174F83 /* AppDelegate.swift */; };
-		5CDBE541250FFFF300174F83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBE540250FFFF300174F83 /* ViewController.swift */; };
+		5CDBE541250FFFF300174F83 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBE540250FFFF300174F83 /* ProfileViewController.swift */; };
 		5CDBE544250FFFF300174F83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBE542250FFFF300174F83 /* Main.storyboard */; };
 		5CDBE546250FFFF400174F83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBE545250FFFF400174F83 /* Assets.xcassets */; };
 		5CDBE549250FFFF400174F83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBE547250FFFF400174F83 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C5532832517F65E006CFD78 /* UIElementSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementSetting.swift; sourceTree = "<group>"; };
 		5CDBE539250FFFF200174F83 /* Tinkoff Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CDBE53C250FFFF300174F83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5CDBE540250FFFF300174F83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5CDBE540250FFFF300174F83 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5CDBE543250FFFF300174F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CDBE545250FFFF400174F83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CDBE548250FFFF400174F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				5CDBE53C250FFFF300174F83 /* AppDelegate.swift */,
-				5CDBE540250FFFF300174F83 /* ViewController.swift */,
+				5CDBE540250FFFF300174F83 /* ProfileViewController.swift */,
+				5C5532832517F65E006CFD78 /* UIElementSetting.swift */,
 				5CDBE542250FFFF300174F83 /* Main.storyboard */,
 				5CDBE545250FFFF400174F83 /* Assets.xcassets */,
 				5CDBE547250FFFF400174F83 /* LaunchScreen.storyboard */,
@@ -91,7 +94,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = AlekseyKudryashov;
 				TargetAttributes = {
 					5CDBE538250FFFF200174F83 = {
@@ -135,8 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CDBE541250FFFF300174F83 /* ViewController.swift in Sources */,
+				5CDBE541250FFFF300174F83 /* ProfileViewController.swift in Sources */,
 				5CDBE53D250FFFF300174F83 /* AppDelegate.swift in Sources */,
+				5C5532842517F65E006CFD78 /* UIElementSetting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +192,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -249,6 +254,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -339,6 +345,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
