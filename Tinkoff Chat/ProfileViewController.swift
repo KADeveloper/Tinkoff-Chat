@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import Photos
 
 extension UIAlertController {
     func pruneNegativeWidthConstraints() {
@@ -31,11 +33,17 @@ class ProfileViewController: UIViewController {
     private let userName: [String: String] = ["Marina": "Dudarenko"]
     private let userDescription: String = "UI/UX designer, web-designer"
     private let userLocation: String = "Moscow, Russia"
-    
+
     //MARK: - Lifecycle
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        print("Init: \(String(describing: profileSaveButton?.frame))") //на этом этапе элементы только начинают инициализироваться и поэтому у свойства frame кнопки Save возвращается nil, так как фактически она еще не инициализирована.
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         printInConsole(function: "\(#function)")
+        print("Did load: \(profileSaveButton.frame)") //на этом этапе все элементы уже инициализированы и View загружена, размеры кнопки Save заданы как на симуляторе, так как элементы на экран пользователя еще не выведены.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +57,7 @@ class ProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         printInConsole(function: "\(#function)")
+        print("Did Appear: \(profileSaveButton.frame)") //На этом этапе все элементы уже показаны и получили свои заданные размеры согласно выбранному или используемому девайсу
     }
 
     override func viewWillLayoutSubviews() {
@@ -103,10 +112,40 @@ class ProfileViewController: UIViewController {
         if sender.tag == 1 {
             let alert = UIAlertController(title: "Edit profile", message: .none, preferredStyle: .actionSheet)
             let choosePhotoFromGalery = UIAlertAction(title: "Photo from galery", style: .default, handler: {_ in
-                self.showImagePickerController(sourceType: .photoLibrary)
+                switch PHPhotoLibrary.authorizationStatus() {
+                case .authorized:
+                    DispatchQueue.main.async {
+                        self.showImagePickerController(sourceType: .photoLibrary)
+                    }
+                case .notDetermined:
+                    PHPhotoLibrary.requestAuthorization({status in
+                        if status == .authorized{
+                            DispatchQueue.main.async {
+                                self.showImagePickerController(sourceType: .photoLibrary)
+                            }
+                        } else {return}
+                    })
+                default:
+                    return
+                }
             })
             let choosePhotoFromCamera = UIAlertAction(title: "Make a photo", style: .default, handler: {_ in
-                self.showImagePickerController(sourceType: .camera)
+                switch AVCaptureDevice.authorizationStatus(for: .video) {
+                case .authorized:
+                    DispatchQueue.main.async {
+                        self.showImagePickerController(sourceType: .camera)
+                    }
+                case .notDetermined:
+                    AVCaptureDevice.requestAccess(for: .video) { granted in
+                        if granted {
+                            DispatchQueue.main.async {
+                                self.showImagePickerController(sourceType: .camera)
+                            }
+                        }
+                    }
+                default:
+                    return
+                }
             })
             let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(choosePhotoFromGalery)
