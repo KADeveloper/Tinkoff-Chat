@@ -34,59 +34,20 @@ class ProfileViewController: UIViewController {
     private let userDescription: String = "UI/UX designer, web-designer"
     private let userLocation: String = "Moscow, Russia"
 
-    //MARK: - Lifecycle
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        print("Init: \(String(describing: profileSaveButton?.frame))") //на этом этапе элементы только начинают инициализироваться и поэтому у свойства frame кнопки Save возвращается nil, так как фактически она еще не инициализирована.
-    }
-    
+    //MARK: - Lifecycle    
     override func viewDidLoad() {
         super.viewDidLoad()
-        printInConsole(function: "\(#function)")
-        print("Did load: \(profileSaveButton.frame)") //на этом этапе все элементы уже инициализированы и View загружена, размеры кнопки Save заданы как на симуляторе, так как элементы на экран пользователя еще не выведены.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        printInConsole(function: "\(#function)")
         
         showUIElements()
         hideInitialNameLabel()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        printInConsole(function: "\(#function)")
-        print("Did Appear: \(profileSaveButton.frame)") //На этом этапе все элементы уже показаны и получили свои заданные размеры согласно выбранному или используемому девайсу
-    }
-
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        printInConsole(function: "\(#function)")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        printInConsole(function: "\(#function)")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        printInConsole(function: "\(#function)")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        printInConsole(function: "\(#function)")
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Private
-    private func printInConsole(function: String) {
-        #if DEBUG
-        print("\(function)")
-        #endif
-    }
-    
     private func showUIElements() {
         for (name, surname) in userName {
             initialNameLabel.labelSettings(textAlignment: .center, font: UIFont.systemFont(ofSize: 120, weight: .regular), textColor: UIColor(red: 54/255, green: 55/255, blue: 56/255, alpha: 1), numberOfLines: 1, text: "\(name.first?.uppercased() ?? "")\(surname.first?.uppercased() ?? "")", cornerRadius: profileImageView.bounds.width / 2)
@@ -159,10 +120,6 @@ class ProfileViewController: UIViewController {
 
 //MARK: -
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func showImagePickerControllerActionSheet() {
-        
-    }
-    
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
